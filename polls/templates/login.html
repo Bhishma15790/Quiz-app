@@ -1,28 +1,35 @@
 {% extends 'home.html' %}
 {% load static %}
+{% load i18n %}
 
 
-<link type="text/css" rel="stylesheet" href="{% static '' %}css/style.css" />
+<link type="text/css" rel="stylesheet" href="{% static 'css/style.css' %}" />
 {% block body %}
-
-	<section class="ftco-section">
-		<div class="container">
+{% if messages %}
+                            {% for message in messages %}
+                                <div class="alert alert-{{message.tags}}" role="alert">
+                                    {{ message }}
+                                </div>
+                            {% endfor %}
+                        {% endif %}
+	<section class="ftco-section"  >
+		<div class="container" style="padding-top: 150px; padding-bottom: 150px; ">
 			<div class="row justify-content-center">
-				<div class="col-md-6 text-center mb-5">
-					<h2 class="heading-section">Login #10</h2>
-				</div>
+				
+				
 			</div>
 			<div class="row justify-content-center">
 				<div class="col-md-6 col-lg-4">
 					<div class="login-wrap p-0">
-		      	<h3 class="mb-4 text-center">Have an account?</h3>
-		      	<form action="#" class="signin-form">
+		      	<h3 class="mb-4 text-center">  Already  have an account?</h3>
+				  <form action="" method="post">
+					{% csrf_token %}
 		      		<div class="form-group">
-		      			<input type="text" class="form-control" placeholder="Username" required>
+		      			<input type="text" class="form-control" name="username" id="username" placeholder="Username/Phone No" required="required">
 		      		</div>
 	            <div class="form-group">
-	              <input id="password-field" type="password" class="form-control" placeholder="Password" required>
-	              <span toggle="#password-field" class="fa fa-fw fa-eye field-icon toggle-password"></span>
+	              <input id="password" type="password" name="password" class="form-control" placeholder="Password" required="required">
+	              
 	            </div>
 	            <div class="form-group">
 	            	<button type="submit" class="form-control btn btn-primary submit px-3">Sign In</button>
@@ -35,14 +42,27 @@
 									</label>
 								</div>
 								<div class="w-50 text-md-right">
-									<a href="#" style="color: #fff">Forgot Password</a>
+									<a href="#" >Forgot Password</a>
 								</div>
 	            </div>
 	          </form>
 	          <p class="w-100 text-center">&mdash; Or Sign In With &mdash;</p>
 	          <div class="social d-flex text-center">
-	          	<a href="#" class="px-2 py-2 mr-md-1 rounded"><span class="ion-logo-facebook mr-2"></span> Facebook</a>
-	          	<a href="#" class="px-2 py-2 ml-md-1 rounded"><span class="ion-logo-twitter mr-2"></span> Twitter</a>
+				
+			  <p>
+				<a
+				class="btn btn-primary btn-floating m-1"
+				
+				href="#!"
+				role="button"
+				><i class="fab fa-facebook-f"></i>&nbsp; &nbsp; Log in via Facebook  </a>
+				<a
+				class="btn btn-primary btn-floating m-1"
+				
+				href="#!"
+				role="button"
+				><i class="fab fab fa-google"></i>&nbsp; &nbsp; Log in via Gmail  </a>
+			</p>
 	          </div>
 		      </div>
 				</div>

@@ -1,14 +1,253 @@
-.logo-image{
-    width: 46px;
-    height: 46px;
-    border-radius: 50%;
-    overflow: hidden;
-    margin-top: -6px;
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
+html, body {
+    font-family:'Poppins';
+    font-size: 17px;
+    line-height: 1.2;
+    box-sizing: border-box;
+    margin: 0;
+    overflow-x: hidden;
+    top: 0;
+    left: 0;
+
+}
+a {
+    text-decoration: none;
+    color: rgba(34, 54, 69, 7);
+    font-weight: 500;
+}
+
+ a:hover {
+color: #d31e09;
+ }
+
+ ul {
+     list-style-type: none;
+ }
+.navbar {
+    background: white;
+    padding: 3rem 2rem;
+    height: 0rem;
+    min-width: 12vh;
+}
+
+.navbar .navbar-brand a {
+    padding: 1rem 0;
+    display: block;
+    text-decoration: none;
+
+}
+
+.navbar-brand {
+    font-family: 'pacifico', cursive;
+    font-size: 2.5rem;
+    color: #d31e09;
+}
+
+.navbar-light .navbar-brand {
+    color: #d31e09;
+}
+
+.navbar-toggler {
+    background: #d31e09;
+    border: none;
+    padding: 10px, 6px;
+    outline: none;
+}
+
+.navbar-toggler span {
+    display: block;
+    width: 22px;
+    height: 2px;
+    border: 1px;
+    background: #fff;
+}
+
+.navbar-toggler span + span { 
+    margin-top: 4px;
+    width: 10px;
+    margin-left: 4px;
+
+}
+.navbar-toggler span + span + span {
+    width: 10px;
+    margin-left: 10px;
+}
+
+.navbar-expaand-lg .nabar-nav .nav-link {
+    padding: 2rem 1.2rem;
+    font-size: 1.4rem;
+    position: relative;
+}
+
+.navbar-expaand-lg .nabar-nav .nav-link:hover {
+ border-top: 4px solid #d31e09;
+}
+.navbar-expaand-lg .nabar-nav .nav-link:active\ {
+    border-top: 4px solid #d31e09;
+    color: #d31e09;
+   }
+
+.navbar-nav button {
+padding: 0.5rem;
+
+}
+
+.navbar-nav .btn {
+    background-color: #d31e09;
+    color: #fff;
+    border-radius: 5px;
+    padding: 0.5rem, 1rem;
+    font-size: 1.2rem;
+    margin-top: 0.5px;
+}
+
+.navbar-nav.btn:hover {
+    background-color: #d31e09;
+}
+
+label.radio {
+    cursor: pointer
+}
+
+label.radio input {
+    position: absolute;
+    top: 0;
+    left: 0;
+    visibility: hidden;
+    pointer-events: none
+}
+
+label.radio span {
+    padding: 4px 0px;
+    border: 1px solid red;
+    display: inline-block;
+    color: red;
+    width: 100px;
+    text-align: center;
+    border-radius: 3px;
+    margin-top: 7px;
+    text-transform: uppercase
+}
+
+label.radio input:checked+span {
+    border-color: red;
+    background-color: red;
+    color: #fff
+}
+
+.ans {
+    margin-left: 36px !important
+}
+
+.btn:focus {
+    outline: 0 !important;
+    box-shadow: none !important
+}
+
+.btn:active {
+    outline: 0 !important;
+    box-shadow: none !important
+}
+
+.quiz {
+    padding-top: 150px;
+    padding-bottom: 160px;
 }
 
 
+.register {
+    padding-top: 100px;
+}
 
+.dropdown-menu[data-bs-popper] {
+    /* top: 100%; */
+    left: auto;
+    /* margin-top: .125rem; */
+}
 
+.header-btns>li {
+    display: inline-block;
+    vertical-align: top;
+    padding: 15px 0px;
+  }
+  
+  .header-btns>li+li {
+    margin-left: 15px;
+  }
+  
+  .header-btns>li .header-btns-icon {
+    position: relative;
+    float: left;
+    margin-right: 15px;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    color: #30323A;
+    background-color: #FFF;
+    border: 1px solid #DADADA;
+  }
+  
+  .header-btns .dropdown-toggle {
+    display: block;
+    cursor: pointer;
+  }
+  
+  .header-account.dropdown .custom-menu>li>a>i {
+    margin-right: 15px;
+    color: #F8694A;
+  }
+  
+  /*----------------------------*\
+      Cart header
+  \*----------------------------*/
+  
+  .header-cart .header-btns-icon .qty {
+    position: absolute;
+    right: -9px;
+    top: -9px;
+    width: 18px;
+    height: 18px;
+    line-height: 18px;
+    text-align: center;
+    font-size: 10px;
+    background: #F8694A;
+    color: #FFF;
+    border-radius: 50%;
+  }
+  
+  .header-cart.dropdown .custom-menu {
+    width: 300px;
+  }
+  
+  #shopping-cart .shopping-cart-list {
+    max-height: 260px;
+    margin-bottom: 15px;
+    overflow-y: scroll;
+  }
+  
+  #shopping-cart .shopping-cart-list .product.product-widget:first-child {
+    margin-top: 0px;
+  }
+  
+  #shopping-cart .shopping-cart-list .product.product-widget:last-child {
+    margin-bottom: 0px;
+  }
+  
+  #shopping-cart .shopping-cart-btns>button {
+    width: calc(50% - 2px);
+  }
+  
 
-
-
+.grid {
+     width: 200px;
+     height: 200px;
+     background-color: #d31e09;
+     display: inline-block;
+     font-size: 25px;
+     margin: 22px;
+     padding: 22px;
+     text-align: center;
+     
+}

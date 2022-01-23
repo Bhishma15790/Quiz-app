@@ -1,0 +1,36 @@
+{% extends 'home.html' %}
+{% load static %}
+{% load i18n %}
+
+<link type="text/css" rel="stylesheet" href="{% static '' %}css/style.css" />
+{% block body %}
+
+<div class="container rounded bg-white mt-5">
+
+    <div class="row">
+        <div class="col-md-4 border-right">
+            <div class="d-flex flex-column align-items-center text-center p-3 py-5"><img class="rounded-circle mt-5" src="{% static 'images/profile.png' %}" width="90"><span class="font-weight-bold">{{ profile.user.username }}</span><span class="text-black-50">{{ profile.city }}</span><span>India</span></div>
+        </div>
+        <div class="col-md-8">
+            <div class="p-3 py-5">
+                
+                <div class="row mt-2">
+                    <div class="col-md-6"><input type="text" class="form-control" placeholder="first name" value="{{ profile.fullname }}"></div>
+                    
+                </div>
+                <div class="row mt-3">
+                    <div class="col-md-6"><input type="text" class="form-control" placeholder="Email" value="{{ profile.email }}"></div>
+                    <div class="col-md-6"><input type="text" class="form-control" value="{{ profile.phone }}" placeholder="Phone number"></div>
+                </div>
+                <div class="row mt-3">
+                    <div class="col-md-6"><input type="text" class="form-control" placeholder="address" value="{{ profile.address  }}"></div>
+                    <div class="col-md-6"><input type="text" class="form-control" value="India" placeholder="Country"></div>
+                </div>
+               
+                <div class="mt-5 text-right"><button class="btn btn-primary profile-button" type="button">Edit Profile</button></div>
+            </div>
+        </div>
+    </div>
+   
+</div>
+{% endblock %}

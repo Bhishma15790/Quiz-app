@@ -1,50 +1,92 @@
 
 {% load static %}
+{% load i18n %}
 <link type="text/css" rel="stylesheet" href="{% static 'css/style.css' %}" />
-
-
-
+<!--{% load mptt_tags %}
+<ul>
+    {% recursetree category %}
+        <li>
+            {{ node.name }}
+            {% if not node.is_leaf_node %}
+                <ul class="children">
+                    {{ children }}
+                </ul>
+            {% endif %}
+        </li>
+    {% endrecursetree %}
+</ul>-->
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="#">Navbar</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
+  <div class="container-fluid">
+    <a class="navbar-brand" href="{% url 'quiz' %}">Quiz App  </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span></span>
+      <span></span>
+      <span></span>
     </button>
-  
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item active">
-          <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+    <div class="collapse navbar-collapse justify-content-between" id="navbarSupportedContent">
+      {% load mptt_tags %}
+      <ul class="navbar-nav ml-auto mb-2 mb-lg-0">
+       <!-- <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#">Home</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#">Link</a>
-        </li>
+        </li>-->
+        {% recursetree category %}
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Dropdown
+          <a  href="#" class="nav-link dropdown-toggle"  id="navbarDropdown" {% if not node.is_leaf_node %} data-bs-toggle="dropdown" aria-expanded="false" {% endif %}>
+            {{ node.name }}
           </a>
-          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="#">Action</a>
-            <a class="dropdown-item" href="#">Another action</a>
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="#">Something else here</a>
-          </div>
+          {% if not node.is_leaf_node %}
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#">{{ children }}</a></li>
+            
+          </ul>
+          {% endif %}
         </li>
-        <li class="nav-item">
-          <a class="nav-link disabled" href="#">Disabled</a>
-        </li>
+        {% endrecursetree %}
       </ul>
-      <a class="navbar-brand" href="/">
-        <div class="logo-image">
-              <img src="{% static 'images/download.png' %}" class="img-fluid">
-        </div>
-        <a  href="{% url 'login' %}" >Log in</a>
-  </a>
-  
+
+
+   <ul class="navbar-nav ml-auto">
+      <!-- <li class=" dropdown default-dropdown">
+        {% if user.id is not None %}
+            <div class="nav-link dropdown-toggle" role="button" data-toggle="dropdown" aria-expanded="true">
+                
+                    <img src="{% static 'images/userpic.png' %}" style="height: 40px; border-radius: 30%">
+                </div>
+                <strong class="text-uppercase">{{ user.username }} <i class="fa fa-caret-down"></i></strong>
+            
+        {% else %}
+            <a href="{% url 'user_login' %}" class="text-uppercase">Login</a> / <a href="{% url 'signup' %}" class="text-uppercase">Sign Up</a>
+        {% endif %}
+
+        <ul class="custom-menu">
+            <li><a href="#"><i class="fa fa-user-o"></i>   "My Account" </a></li>
+
+            <li><a href="#"><i class="fa fa-unlock-alt"></i> "Logout</a></li>
+
+        </ul>
+    </li>--> 
+    {% if user.id is not None %}
     
-    <div>
-    <a href="{% url 'signup' %}">  Sign Up </a>
-  </div>
-        
+      <img src="{% static 'images/userpic.png' %}" style="height: 50px; border-radius: 40%">
       
+      <div class="dropdown show" style="padding-top: 15px; padding-left: 10px;">
+      <a class=" dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <strong class="text-uppercase">{{ user.username }} </strong>
+      </a>
+      {% else %}
+      <a href="{% url 'user_login' %}" class="btn">Login</a>  <a href="{% url 'signup' %}" class="btn">Sign Up</a>
+      {% endif %}
+      <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+        <a href="userprofile/" class="dropdown-item"><i class="fa fa-user-o" aria-hidden="true"></i>  My  Profile </a>
+        <a href="logout/" class="dropdown-item"><i class="fa fa-unlock-alt"></i> Logout</a>
+        
+      </div>
     </div>
-  </nav>
+      <!-- <button class="btn"> <a href="{% url 'user_login' %}" >login</a>  </button>-->
+     </ul>
+    </div>
+  </div>
+</nav>

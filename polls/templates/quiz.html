@@ -1,0 +1,92 @@
+{% extends 'home.html' %}
+
+{% load static %}
+
+{% block body %}
+<link type="text/css" rel="stylesheet" href="{% static '' %}css/style.css"/>
+
+<div class="quiz">
+    
+    <div class="d-flex justify-content-center row">
+        <div class="col-md-10 col-lg-10">
+            <div class="border">
+                <div class="question bg-white p-3 border-bottom">
+                    <div class="d-flex flex-row justify-content-between align-items-center mcq">
+                        <h4>Marathon quiz</h4><span></span>
+                    </div>
+                </div>
+                {% for rs in quesmodel %}
+                <div class="grid1">
+                <div class="question bg-white p-3 border-bottom">
+                    <div class="d-flex flex-row align-items-center question-title">
+                        <h3 class="text-danger">Q.</h3>
+                        <h5 class="mt-1 ml-2">{{ rs.question }} </h5>
+                    </div>
+                    <div class="ans ml-2">
+                        <label class="radio"> <input type="radio" name="brazil" value="brazil"> <span>{{ rs.op1 }}</span>
+                        </label>
+                    </div>
+                    <div class="ans ml-2">
+                        <label class="radio"> <input type="radio" name="Germany" value="Germany"> <span>{{ rs.op2 }}</span>
+                        </label>
+                    </div>
+                    <div class="ans ml-2">
+                        <label class="radio"> <input type="radio" name="Indonesia" value="Indonesia"> <span>{{ rs.op3 }}</span>
+                        </label>
+                    </div>
+                    <div class="ans ml-2">
+                        <label class="radio"> <input type="radio" name="Russia" value="Russia"> <span>{{ rs.op4 }}</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+            
+
+                <div class="d-flex flex-row justify-content-between align-items-center p-3 bg-white">
+                    <button  onclick="ShowPrev()" class="btn btn-primary d-flex align-items-center btn-danger" ><i class="fa fa-angle-left mt-1 mr-1"></i>&nbsp;previous</button>
+                    <button  onclick="ShowNext()" class="btn btn-primary border-success align-items-center btn-success" >Next<i class="fa fa-angle-right ml-2"></i></button></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    var visibleDiv = 0;
+    function showDiv()
+    {
+      $(".grid1").hide();
+      $(".grid1:eq("+ visibleDiv +")").show();
+    
+    }
+    showDiv()
+    
+    function ShowNext()
+    {
+      if(visibleDiv== $(".grid1").length-1)
+      {
+        visibleDiv = 0;
+    
+      }
+      else{
+        visibleDiv ++;
+      }
+      showDiv()
+    }
+    function ShowPrev()
+    {
+      if (visibleDiv == 0)
+      {
+        visibleDiv= $(".grid1").length-1
+      }
+      else{
+        visibleDiv --;
+    
+      }
+      showDiv();
+    }
+    
+    
+    </script>
+{% endblock %}

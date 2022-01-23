@@ -1,0 +1,77 @@
+
+
+
+{% load static %}
+{% load i18n %}
+
+
+<link type="text/css" rel="stylesheet" href="{% static '' %}css/style.css" />
+
+
+<div class="grid">one</div>
+<div class="grid">two</div>
+<div class="grid">three</div>
+<div class="grid">four</div>
+<div class="grid">five</div>
+<div class="grid">six</div>
+<button onclick="ShowPrev()"> Show Prev </button>
+<button onclick="ShowNext()"> Show Next </button>
+
+
+
+
+<br>
+
+<section id="section-jumbotron" class="jumbotron jumbotron-fluid d-flex justify-content-center align-items-center">
+  <div class="container text-center">
+    <h1 class="display-1 text-info">Let's Quiz</h1>
+    <p class="display-4 d-none d-sm-block">Test your skills and become a master.</p>
+    <p class="lead">We organize quizzes on various topics.</p>
+
+    
+
+    <p class="lead">Sign up if you haven't already and get access to millions of quizzes on the topic of your interest.</p>
+    <p><strong> Start Your Journey Here:</strong></p>
+    <a href="{% url 'signup' %}" class="btn btn-lg btn-info" style="padding-right: 35px;"><i class="fa fa-user-plus" aria-hidden="true"></i> Sign Up</a>
+    
+    <br><br><br>
+  </div>  
+</section>
+
+<script>
+var visibleDiv = 2;
+function showDiv()
+{
+  $(".grid").hide();
+  $(".grid:eq("+ visibleDiv +")").show();
+
+}
+showDiv()
+
+function ShowNext()
+{
+  if(visibleDiv== $(".grid").length-1)
+  {
+    visibleDiv = 0;
+
+  }
+  else{
+    visibleDiv ++;
+  }
+  showDiv()
+}
+function ShowPrev()
+{
+  if (visibleDiv == 0)
+  {
+    visibleDiv= $(".grid").length-1
+  }
+  else{
+    visibleDiv --;
+
+  }
+  showDiv();
+}
+
+
+</script>
